@@ -6,8 +6,28 @@ class RouteProvider implements NyProvider {
   boot(Nylo nylo) async {
     nylo.addRouter(appRouter());
 
+    // Optional
+    // nylo.onDeepLink(_onDeepLink); // Handle deep links
+
     return nylo;
   }
+
+  // _onDeepLink(route, data) {
+  //   print("Deep link route: $route");
+  //   print("Deep link data: $data");
+
+  // Example of updating the route stack
+  //  if (route == ProfilePage.path) {
+  //    Nylo.updateRouteStack([
+  //      SettingsPage.path, // first route
+  //      PostsPage.path, // second route
+  //      PostDetailPage.path, // and so one..
+  //      ProfilePage.path // deep link route
+  //    ], replace: true, deepLink: true, dataForRoute: {
+  //          PostsPage.path: {"name": "John Doe"}
+  //    });
+  //  }
+  // }
 
   @override
   afterBoot(Nylo nylo) async {
