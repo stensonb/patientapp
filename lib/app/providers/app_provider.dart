@@ -22,6 +22,7 @@ class AppProvider implements NyProvider {
     nylo.addModelDecoders(modelDecoders);
     nylo.addControllers(controllers);
     nylo.addApiDecoders(apiDecoders);
+    nylo.useErrorStack();
 
     // Optional
     // nylo.showDateTimeInLogs(); // Show date time in logs
