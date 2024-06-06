@@ -94,6 +94,23 @@ class _HomePageState extends NyState<HomePage> {
                         shrinkWrap: true,
                         children:
                         ListTile.divideTiles(context: context, tiles: [
+                          if (Nylo.containsRoutes(["/login", "/register"]))
+                            ...[
+                              MaterialButton(
+                                onPressed: () => routeTo("/login"),
+                                child: Text(
+                                  "Login".tr(),
+                                ).bodyLarge(context).setColor(
+                                    context, (color) => color.surfaceContent),
+                              ),
+                              MaterialButton(
+                                onPressed: () => routeTo("/register"),
+                                child: Text(
+                                  "Register".tr(),
+                                ).bodyLarge(context).setColor(
+                                    context, (color) => color.surfaceContent),
+                              ),
+                            ],
                           MaterialButton(
                             onPressed: widget.controller.onTapDocumentation,
                             child: Text(
