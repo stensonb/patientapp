@@ -8,7 +8,27 @@ import 'package:nylo_framework/nylo_framework.dart';
 |-------------------------------------------------------------------------- */
 
 class Boot {
-  static Future<Nylo> nylo() async => await bootApplication(providers);
+  static Future<Nylo> nylo() async {
+    await _setup();
+    return await bootApplication(providers);
+  }
   static Future<void> finished(Nylo nylo) async =>
       await bootFinished(nylo, providers);
+}
+
+/* Setup
+|--------------------------------------------------------------------------
+| You can use _setup to initialize classes, variables, etc.
+| It's run before your app providers are booted.
+|-------------------------------------------------------------------------- */
+
+_setup() async {
+
+  /// Example: Initializing StorageConfig
+  // StorageConfig.init(
+  //   androidOptions: AndroidOptions(
+  //     resetOnError: true,
+  //     encryptedSharedPreferences: false
+  //   )
+  // );
 }
