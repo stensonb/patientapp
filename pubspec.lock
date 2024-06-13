@@ -149,10 +149,10 @@ packages:
     dependency: transitive
     description:
       name: error_stack
-      sha256: "586ffb16c6db5a19cf0872739828b521dab5ba156b0c9f7eade85c4fec706ca2"
+      sha256: "34dc15d9d654494de34261ebe3c35e1cf96c89b43c646f279485ac08fdfc2560"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.0"
+    version: "1.6.0"
   fake_async:
     dependency: transitive
     description:
@@ -401,18 +401,18 @@ packages:
     dependency: "direct main"
     description:
       name: nylo_framework
-      sha256: d657c4dec65eee807bca29ec1e4962ff63f4551d39ffa97738dd8ea17fad56a7
+      sha256: "02ae84a4c72f516af5b787c716d417ff980fd43336369bc5c86b36868baf3d45"
       url: "https://pub.dev"
     source: hosted
-    version: "5.29.0"
+    version: "5.29.1"
   nylo_support:
     dependency: transitive
     description:
       name: nylo_support
-      sha256: d722e3d1e4a8353c20561cba4d45b735a2d010b5f5c132691266d9725bce9f8e
+      sha256: "5ac5a125c405fb25ed0faaf9bdcc53e334186856dd536673dbe8886fa4e96b54"
       url: "https://pub.dev"
     source: hosted
-    version: "5.73.1"
+    version: "5.74.0"
   package_config:
     dependency: transitive
     description:
