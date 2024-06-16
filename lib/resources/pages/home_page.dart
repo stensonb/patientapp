@@ -10,7 +10,7 @@ import '/app/controllers/home_controller.dart';
 class HomePage extends NyStatefulWidget<HomeController> {
   static const path = '/home';
 
-  HomePage({super.key}) : super(path, child: _HomePageState());
+  HomePage({super.key}) : super(path, child: () => _HomePageState());
 }
 
 class _HomePageState extends NyState<HomePage> {
