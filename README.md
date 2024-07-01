@@ -54,6 +54,8 @@ If you discover any security related issues, please email support@nylo.dev inste
 * [youssefKadaouiAbbassi](https://github.com/youssefKadaouiAbbassi)
 * [jeremyhalin](https://github.com/jeremyhalin)
 * [abdulawalarif](https://github.com/abdulawalarif)
+* [lepresk](https://github.com/lepresk)
+* [joshua1996](https://github.com/joshua1996)
 
 ## Licence
 
