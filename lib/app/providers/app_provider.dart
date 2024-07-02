@@ -1,3 +1,4 @@
+import '/config/form_casts.dart';
 import '/config/decoders.dart';
 import '/config/design.dart';
 import '/config/theme.dart';
@@ -22,6 +23,7 @@ class AppProvider implements NyProvider {
     nylo.addModelDecoders(modelDecoders);
     nylo.addControllers(controllers);
     nylo.addApiDecoders(apiDecoders);
+    nylo.addFormCasts(formCasts);
     nylo.useErrorStack();
 
     // Optional
