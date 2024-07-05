@@ -70,7 +70,7 @@ class ToastNotification extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyLarge!
+                                .bodyMedium!
                                 .copyWith(color: context.isDarkMode ? Colors.white70 : "#5d626b".toHexColor()),
                           ),
                         ),
