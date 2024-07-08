@@ -9,7 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 /* Design
 |--------------------------------------------------------------------------
 | Contains App Font + Widgets used in the Nylo.
-|
 | Learn more: https://nylo.dev/docs/5.20.0/themes-and-styling#design
 |-------------------------------------------------------------------------- */
 

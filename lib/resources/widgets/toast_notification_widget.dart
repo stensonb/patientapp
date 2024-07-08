@@ -60,7 +60,7 @@ class ToastNotification extends StatelessWidget {
                           _toastMeta.title.tr(),
                           style: Theme.of(context)
                               .textTheme
-                              .headlineSmall!
+                              .bodyLarge!
                               .copyWith(color: context.isDarkMode ? Colors.white.withOpacity(0.8) : "#171717".toHexColor()),
                         ).fontWeightBold(),
                         Flexible(
