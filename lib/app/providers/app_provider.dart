@@ -1,3 +1,4 @@
+import '/app/forms/style/form_style.dart';
 import '/config/form_casts.dart';
 import '/config/decoders.dart';
 import '/config/design.dart';
@@ -15,6 +16,8 @@ class AppProvider implements NyProvider {
       assetsDirectory: assetsDirectory,
     );
 
+    FormStyle formStyle = FormStyle();
+
     nylo.addLoader(loader);
     nylo.addLogo(logo);
     nylo.addThemes(appThemes);
@@ -25,6 +28,7 @@ class AppProvider implements NyProvider {
     nylo.addApiDecoders(apiDecoders);
     nylo.addFormCasts(formCasts);
     nylo.useErrorStack();
+    nylo.addFormStyle(formStyle);
 
     // Optional
     // nylo.showDateTimeInLogs(); // Show date time in logs
