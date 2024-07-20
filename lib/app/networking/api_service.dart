@@ -26,8 +26,7 @@ class ApiService extends NyApiService {
   String get baseUrl => getEnv('API_BASE_URL');
 
   @override
-  // ignore: overridden_fields
-  final interceptors = {
+  get interceptors => {
     if (getEnv('APP_DEBUG') == true)
     PrettyDioLogger: PrettyDioLogger()
   };
