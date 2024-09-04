@@ -18,7 +18,7 @@ dependencies:
   google_fonts: ^6.2.1
   analyzer: ^6.7.0
   intl: ^0.19.0
-  nylo_framework: ^5.32.7
+  nylo_framework: ^5.32.8
   pretty_dio_logger: ^1.4.0
   win32: ^5.5.4
   flutter:
