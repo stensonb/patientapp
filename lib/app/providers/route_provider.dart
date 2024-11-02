@@ -8,7 +8,6 @@ class RouteProvider implements NyProvider {
 
     // Optional
     // nylo.onDeepLink(_onDeepLink); // Handle deep links
-
     return nylo;
   }
 

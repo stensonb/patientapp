@@ -1,23 +1,30 @@
-import 'package:flutter/material.dart';
 import '/resources/pages/home_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
 /* Auth Route Guard
 |--------------------------------------------------------------------------
 | Checks if the User is authenticated.
-| Learn more https://nylo.dev/docs/5.20.0/router#route-guards
+|
+| * [Tip] Create new route guards using the CLI 🚀
+| Run the below in the terminal to create a new route guard.
+| "dart run nylo_framework:main make:route_guard check_subscription"
+|
+| Learn more https://nylo.dev/docs/6.x/router#route-guards
 |-------------------------------------------------------------------------- */
 
 class AuthRouteGuard extends NyRouteGuard {
   AuthRouteGuard();
 
   @override
-  Future<bool> canOpen(BuildContext? context, NyArgument? data) async {
-    return (await Auth.loggedIn());
-  }
+  onRequest(PageRequest pageRequest) async {
+    // print(data); // will give you access to the data passed to the route
+    // print(queryParameters); // will give you access to the BuildContext
 
-  @override
-  redirectTo(BuildContext? context, NyArgument? data) async {
-    await routeTo(HomePage.path);
+    bool isLoggedIn = (await Auth.isAuthenticated());
+    if (!isLoggedIn) {
+      return redirect(HomePage.path);
+    }
+
+    return pageRequest;
   }
 }

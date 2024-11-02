@@ -16,9 +16,9 @@ ThemeData lightTheme(ColorStyles color) {
 
   return ThemeData(
     useMaterial3: true,
-    primaryColor: color.primaryContent,
+    primaryColor: color.content,
     primaryColorLight: color.primaryAccent,
-    focusColor: color.primaryContent,
+    focusColor: color.content,
     scaffoldBackgroundColor: color.background,
     hintColor: color.primaryAccent,
     dividerTheme: DividerThemeData(color: Colors.grey[100]),
@@ -32,15 +32,15 @@ ThemeData lightTheme(ColorStyles color) {
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
     buttonTheme: ButtonThemeData(
-      buttonColor: color.buttonPrimaryContent,
+      buttonColor: color.buttonContent,
       colorScheme: ColorScheme.light(primary: color.buttonBackground),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(foregroundColor: color.primaryContent),
+      style: TextButton.styleFrom(foregroundColor: color.content),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
-          foregroundColor: color.buttonPrimaryContent,
+          foregroundColor: color.buttonContent,
           backgroundColor: color.buttonBackground),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -54,19 +54,18 @@ ThemeData lightTheme(ColorStyles color) {
     ),
     textTheme: lightTheme,
     colorScheme: ColorScheme.light(
-        surface: color.background, primary: color.primaryAccent),
+      surface: color.background,
+      onSecondary: Colors.white,
+      primary: color.primaryAccent,
+    ),
   );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Light Text Theme
-|--------------------------------------------------------------------------
-*/
+/* Light Text Theme
+|-------------------------------------------------------------------------*/
 
 TextTheme _textTheme(ColorStyles colors) {
-  Color primaryContent = colors.primaryContent;
-  TextTheme textTheme = const TextTheme().apply(displayColor: primaryContent);
+  TextTheme textTheme = const TextTheme().apply(displayColor: colors.content);
   return textTheme.copyWith(
-      labelLarge: TextStyle(color: primaryContent.withOpacity(0.8)));
+      labelLarge: TextStyle(color: colors.content.withOpacity(0.8)));
 }

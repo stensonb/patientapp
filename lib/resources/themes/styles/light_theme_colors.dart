@@ -10,7 +10,7 @@ class LightThemeColors implements ColorStyles {
   Color get background => const Color(0xFFFFFFFF);
 
   @override
-  Color get primaryContent => const Color(0xFF000000);
+  Color get content => const Color(0xFF000000);
   @override
   Color get primaryAccent => const Color(0xFF0045a0);
 
@@ -27,9 +27,14 @@ class LightThemeColors implements ColorStyles {
 
   // buttons
   @override
-  Color get buttonBackground => Colors.blueAccent;
+  Color get buttonBackground => Colors.blue;
   @override
-  Color get buttonPrimaryContent => Colors.white;
+  Color get buttonContent => Colors.white;
+
+  @override
+  Color get buttonSecondaryBackground => const Color(0xff151925);
+  @override
+  Color get buttonSecondaryContent => Colors.white.withOpacity(0.9);
 
   // bottom tab bar
   @override
@@ -46,4 +51,7 @@ class LightThemeColors implements ColorStyles {
   Color get bottomTabBarLabelUnselected => Colors.black45;
   @override
   Color get bottomTabBarLabelSelected => Colors.black;
+
+  // toast notification
+  Color get toastNotificationBackground => Colors.white;
 }

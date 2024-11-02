@@ -4,7 +4,9 @@ class User extends Model {
   String? name;
   String? email;
 
-  User();
+  static StorageKey key = 'user';
+
+  User() : super(key: key);
 
   User.fromJson(dynamic data) {
     name = data['name'];

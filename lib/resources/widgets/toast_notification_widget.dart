@@ -1,3 +1,4 @@
+import '/bootstrap/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -17,11 +18,13 @@ class ToastNotification extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 8.0),
         height: 100,
         decoration: BoxDecoration(
-          color: context.isDarkMode ? "#282c34".toHexColor() : Colors.white,
+          color: context.color.toastNotificationBackground,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: context.isDarkMode ? Colors.black12 : Colors.grey.withOpacity(0.1),
+              color: context.isThemeDark
+                  ? Colors.transparent
+                  : Colors.grey.withOpacity(0.1),
               spreadRadius: 3,
               blurRadius: 5,
               offset: const Offset(0, 2),
@@ -42,7 +45,9 @@ class ToastNotification extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: _toastMeta.color,
-                    borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(8), topLeft: Radius.circular(8))
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(8),
+                        topLeft: Radius.circular(8)),
                   ),
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -58,21 +63,16 @@ class ToastNotification extends StatelessWidget {
                       children: [
                         Text(
                           _toastMeta.title.tr(),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(color: context.isDarkMode ? Colors.white.withOpacity(0.8) : "#171717".toHexColor()),
-                        ).fontWeightBold(),
+                        ).bodyLarge(
+                            color: context.color.content,
+                            fontWeight: FontWeight.bold),
                         Flexible(
                           child: Text(
                             _toastMeta.description,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: context.isDarkMode ? Colors.white70 : "#5d626b".toHexColor()),
-                          ),
+                          ).bodyMedium(
+                              color: context.color.content.withOpacity(0.8)),
                         ),
                       ],
                     ),
@@ -91,24 +91,26 @@ class ToastNotification extends StatelessWidget {
                 width: 30,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: context.isDarkMode ? Colors.white30 : "#f2f2f2".toHexColor(),
-                  borderRadius: BorderRadius.circular(20)
-                ),
+                    color: context.isThemeDark
+                        ? Colors.white30
+                        : "#f2f2f2".toHexColor(),
+                    borderRadius: BorderRadius.circular(20)),
                 child: Center(
                   child: IconButton(
                     padding: EdgeInsets.zero,
-                      onPressed: () {
-                        if (_dismiss != null) {
-                          _dismiss!();
-                        }
-                      },
-                      icon: Icon(
-                        Icons.close,
-                        color: context.isDarkMode ?
-                        Colors.white :
-                        "#878787".toHexColor(),
-                        size: 18,
-                      )),
+                    onPressed: () {
+                      if (_dismiss != null) {
+                        _dismiss();
+                      }
+                    },
+                    icon: Icon(
+                      Icons.close,
+                      color: context.isThemeDark
+                          ? Colors.white
+                          : "#878787".toHexColor(),
+                      size: 18,
+                    ),
+                  ),
                 ),
               ),
             ),

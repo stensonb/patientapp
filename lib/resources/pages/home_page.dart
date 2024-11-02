@@ -1,182 +1,179 @@
-import 'package:nylo_framework/nylo_framework.dart';
-import 'package:nylo_framework/theme/helper/ny_theme.dart';
-import 'package:flutter/material.dart';
+import '/resources/widgets/theme_toggle_widget.dart';
+import '/app/networking/api_service.dart';
 import '/bootstrap/extensions.dart';
 import '/resources/widgets/logo_widget.dart';
 import '/resources/widgets/safearea_widget.dart';
-import '/bootstrap/helpers.dart';
 import '/app/controllers/home_controller.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 
 class HomePage extends NyStatefulWidget<HomeController> {
-  static const path = '/home';
+  static RouteView path = ("/home", (_) => HomePage());
 
-  HomePage({super.key}) : super(path, child: () => _HomePageState());
+  HomePage() : super(child: () => _HomePageState());
 }
 
-class _HomePageState extends NyState<HomePage> {
+class _HomePageState extends NyPage<HomePage> {
+  int? _stars;
 
-  /// The boot method is called before the [view] is rendered.
-  /// You can override this method to perform any async operations.
-  /// Try uncommenting the code below.
-  // @override
-  // boot() async {
-  //   dump("boot");
-  //   await Future.delayed(Duration(seconds: 2));
-  // }
+  @override
+  get init => () async {
+        /// Uncomment the code below to fetch the number of stars for the Nylo repository
+        // Map<String, dynamic>? githubResponse = await api<ApiService>(
+        //         (request) => request.githubInfo(),
+        // );
+        // _stars = githubResponse?["stargazers_count"];
+      };
 
-  /// If you would like to use the Skeletonizer loader,
+  /// Define the Loading style for the page.
+  /// Options: LoadingStyle.normal(), LoadingStyle.skeletonizer(), LoadingStyle.none()
   /// uncomment the code below.
-  // bool get useSkeletonizer => true;
+  LoadingStyle get loadingStyle => LoadingStyle.normal();
 
-  /// The Loading widget is shown while the [boot] method is running.
-  /// You can override this method to show a custom loading widget.
-  // @override
-  // Widget loading(BuildContext context) {
-  //   return Scaffold(
-  //       body: Center(child: Text("Loading..."))
-  //   );
-  // }
-
-  /// The [view] method should display your page.
+  /// The [view] method displays your page.
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello World".tr()),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: widget.controller.showAbout,
-            icon: const Icon(Icons.info_outline),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          showToastSuccess(title: "Hello 👋", description: "Welcome to Nylo");
+        },
+        child: const Icon(Icons.notifications),
       ),
       body: SafeAreaWidget(
-        child: Center(
           child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Logo(),
+          Text(
+            getEnv("APP_NAME"),
+          ).displayMedium(color: context.color.content),
+          const Text("Micro-framework for Flutter", textAlign: TextAlign.center)
+              .titleMedium(color: context.color.primaryAccent),
+          const Text("Build something amazing 💡", textAlign: TextAlign.center)
+              .bodyMedium()
+              .alignCenter(),
+          Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Logo(),
-              Text(
-                getEnv("APP_NAME"),
-              ).displayMedium(context),
-              const Text("Micro-framework for Flutter", textAlign: TextAlign.center)
-                  .titleMedium(context)
-                  .setColor(context, (color) => color.primaryAccent),
-              const Text(
-                "Build something amazing 💡",
-              ).bodyMedium(context).alignCenter(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  const Divider(),
-                  Container(
-                    height: 250,
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                    decoration: BoxDecoration(
-                        color: ThemeColor.get(context).surfaceBackground,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            spreadRadius: 1,
-                            blurRadius: 9,
-                            offset: const Offset(0, 3),
-                          ),
-                        ]),
-                    child: Center(
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        children:
-                        ListTile.divideTiles(context: context, tiles: [
-                          if (Nylo.containsRoute("/landing"))
-                            MaterialButton(
-                              onPressed: () => routeTo("/landing"),
-                              child: Text(
-                                "Landing".tr(),
-                              ).bodyLarge(context).setColor(
-                                  context, (color) => color.surfaceContent),
-                            ),
-                          if (Nylo.containsRoutes(["/login", "/register"]))
-                            ...[
-                              MaterialButton(
-                                onPressed: () => routeTo("/login"),
-                                child: Text(
-                                  "Login".tr(),
-                                ).bodyLarge(context).setColor(
-                                    context, (color) => color.surfaceContent),
-                              ),
-                              MaterialButton(
-                                onPressed: () => routeTo("/register"),
-                                child: Text(
-                                  "Register".tr(),
-                                ).bodyLarge(context).setColor(
-                                    context, (color) => color.surfaceContent),
-                              ),
-                            ],
-                          MaterialButton(
-                            onPressed: widget.controller.onTapDocumentation,
-                            child: Text(
-                              "documentation".tr().capitalize(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                          ),
-                          MaterialButton(
-                            onPressed: widget.controller.onTapGithub,
-                            child: const Text(
-                              "GitHub",
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                          ),
-                          MaterialButton(
-                            onPressed: widget.controller.onTapChangeLog,
-                            child: Text(
-                              "changelog".tr().capitalize(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                          ),
-                          MaterialButton(
-                            onPressed: widget.controller.onTapYouTube,
-                            child: Text(
-                              "YouTube Channel".tr().capitalize(),
-                            ).bodyLarge(context).setColor(
-                                context, (color) => color.surfaceContent),
-                          ),
-                        ]).toList(),
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              const Divider(),
+              Container(
+                height: 250,
+                width: double.infinity,
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                decoration: BoxDecoration(
+                    color: context.color.surfaceBackground,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 1,
+                        blurRadius: 9,
+                        offset: const Offset(0, 3),
                       ),
-                    ),
+                    ]),
+                child: Center(
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: ListTile.divideTiles(context: context, tiles: [
+                      if (Nylo.containsRoute("/landing"))
+                        MaterialButton(
+                          onPressed: () => routeTo("/landing"),
+                          child: Text(
+                            "Landing".tr(),
+                          ).bodyLarge().setColor(
+                              context, (color) => color.surfaceContent),
+                        ),
+                      if (Nylo.containsRoutes(["/login", "/register"])) ...[
+                        MaterialButton(
+                          onPressed: () => routeTo("/login"),
+                          child: Text(
+                            "Login".tr(),
+                          ).bodyLarge().setColor(
+                              context, (color) => color.surfaceContent),
+                        ),
+                        MaterialButton(
+                          onPressed: () => routeTo("/register"),
+                          child: Text(
+                            "Register".tr(),
+                          ).bodyLarge().setColor(
+                              context, (color) => color.surfaceContent),
+                        ),
+                      ],
+                      ListTile(
+                        leading: FaIcon(FontAwesomeIcons.readme),
+                        title: Text(
+                          "Documentation",
+                        ).bodyLarge(color: context.color.surfaceContent),
+                        subtitle: Text(
+                          "Master the framework",
+                        ).bodySmall(color: context.color.surfaceContent),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: widget.controller.onTapDocumentation,
+                      ),
+                      ListTile(
+                        leading: FaIcon(FontAwesomeIcons.github),
+                        title: Text(
+                          "Github",
+                        ).bodyLarge(color: context.color.surfaceContent),
+                        subtitle: Text(
+                          _stars == null ? "Source code" : "$_stars Stars",
+                        ).bodySmall(color: context.color.surfaceContent),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: widget.controller.onTapGithub,
+                      ),
+                      ListTile(
+                        leading: FaIcon(FontAwesomeIcons.newspaper),
+                        title: Text(
+                          "Updates",
+                        ).bodyLarge(color: context.color.surfaceContent),
+                        subtitle: Text(
+                          "View the changelog",
+                        ).bodySmall(color: context.color.surfaceContent),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: widget.controller.onTapChangeLog,
+                      ),
+                      ListTile(
+                        leading: FaIcon(FontAwesomeIcons.youtube),
+                        title: Text(
+                          "YouTube Channel",
+                        ).bodyLarge(color: context.color.surfaceContent),
+                        subtitle: Text(
+                          "Tutorial videos",
+                        ).bodySmall(color: context.color.surfaceContent),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: widget.controller.onTapYouTube,
+                      ),
+                      ListTile(
+                        leading: FaIcon(FontAwesomeIcons.xTwitter),
+                        title: Text(
+                          "Follow us on X",
+                        ).bodyLarge(color: context.color.surfaceContent),
+                        subtitle: Text(
+                          "Stay updated",
+                        ).bodySmall(color: context.color.surfaceContent),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: widget.controller.onTapX,
+                      ),
+                    ]).toList(),
                   ),
-                  const Text(
-                    "Framework Version: $nyloVersion",
-                  )
-                      .bodyMedium(context)
-                      .setColor(context, (color) => Colors.grey),
-                  if (!context.isDarkMode)
-                    Switch(
-                        value: isThemeDark,
-                        onChanged: (_) {
-                          NyTheme.set(context,
-                              id: getEnv(isThemeDark != true
-                                  ? 'DARK_THEME_ID'
-                                  : 'LIGHT_THEME_ID'));
-                        }),
-                  if (!context.isDarkMode)
-                    Text("${isThemeDark ? "Dark" : "Light"} Mode"),
-                ],
+                ),
               ),
+              const Text(
+                "Framework Version: $nyloVersion",
+              ).bodyMedium().setColor(context, (color) => Colors.grey),
+              ThemeToggle(),
             ],
           ),
-        ),
-      ),
+        ],
+      )),
     );
   }
-
-  bool get isThemeDark =>
-      ThemeProvider.controllerOf(context).currentThemeId ==
-          getEnv('DARK_THEME_ID');
 }

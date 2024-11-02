@@ -1,11 +1,12 @@
+import '/config/keys.dart';
 import '/app/forms/style/form_style.dart';
 import '/config/form_casts.dart';
 import '/config/decoders.dart';
 import '/config/design.dart';
 import '/config/theme.dart';
 import '/config/validation_rules.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 import '/config/localization.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 
 class AppProvider implements NyProvider {
   @override
@@ -29,6 +30,8 @@ class AppProvider implements NyProvider {
     nylo.addFormCasts(formCasts);
     nylo.useErrorStack();
     nylo.addFormStyle(formStyle);
+    nylo.addAuthKey(Keys.auth);
+    await nylo.syncKeys(Keys.syncedOnBoot);
 
     // Optional
     // nylo.showDateTimeInLogs(); // Show date time in logs
@@ -38,7 +41,5 @@ class AppProvider implements NyProvider {
   }
 
   @override
-  afterBoot(Nylo nylo) async {
-
-  }
+  afterBoot(Nylo nylo) async {}
 }

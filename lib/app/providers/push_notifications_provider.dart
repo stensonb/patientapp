@@ -1,15 +1,16 @@
 import 'package:nylo_framework/nylo_framework.dart';
 
-class AuthProvider implements NyProvider {
+class PushNotificationsProvider implements NyProvider {
   @override
   boot(Nylo nylo) async {
-    await event<SyncAuthToBackpackEvent>();
+    nylo.useLocalNotifications();
 
     return nylo;
   }
 
   @override
   afterBoot(Nylo nylo) async {
-
+    // Called after booting your provider
+    // ...
   }
 }

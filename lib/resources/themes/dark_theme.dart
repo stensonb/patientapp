@@ -15,10 +15,11 @@ ThemeData darkTheme(ColorStyles color) {
       getAppTextTheme(appFont, defaultTextTheme.merge(_textTheme(color)));
   return ThemeData(
     useMaterial3: true,
-    primaryColor: color.primaryContent,
-    primaryColorDark: color.primaryContent,
-    focusColor: color.primaryContent,
+    primaryColor: color.content,
+    primaryColorDark: color.content,
+    focusColor: color.content,
     scaffoldBackgroundColor: color.background,
+    brightness: Brightness.dark,
     appBarTheme: AppBarTheme(
         surfaceTintColor: Colors.transparent,
         backgroundColor: color.appBarBackground,
@@ -26,17 +27,17 @@ ThemeData darkTheme(ColorStyles color) {
             darkTheme.titleLarge!.copyWith(color: color.appBarPrimaryContent),
         iconTheme: IconThemeData(color: color.appBarPrimaryContent),
         elevation: 1.0,
-        systemOverlayStyle: SystemUiOverlayStyle.light),
+        systemOverlayStyle: SystemUiOverlayStyle.dark),
     buttonTheme: ButtonThemeData(
       buttonColor: color.primaryAccent,
       colorScheme: ColorScheme.light(primary: color.buttonBackground),
     ),
     textButtonTheme: TextButtonThemeData(
-      style: TextButton.styleFrom(foregroundColor: color.primaryContent),
+      style: TextButton.styleFrom(foregroundColor: color.content),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
-          foregroundColor: color.buttonPrimaryContent,
+          foregroundColor: color.buttonContent,
           backgroundColor: color.buttonBackground),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -49,22 +50,22 @@ ThemeData darkTheme(ColorStyles color) {
       selectedItemColor: color.bottomTabBarLabelSelected,
     ),
     textTheme: darkTheme,
-    colorScheme: ColorScheme.dark(surface: color.background),
+    colorScheme: ColorScheme.dark(
+      primary: color.primaryAccent,
+      onSurface: Colors.black,
+    ),
   );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Dark Text Theme
-|--------------------------------------------------------------------------
-*/
+/* Dark Text Theme
+|-------------------------------------------------------------------------*/
 
 TextTheme _textTheme(ColorStyles colors) {
-  Color primaryContent = colors.primaryContent;
-  TextTheme textTheme = const TextTheme().apply(displayColor: primaryContent);
+  TextTheme textTheme = const TextTheme()
+      .apply(displayColor: colors.content, bodyColor: colors.content);
   return textTheme.copyWith(
-      titleLarge: TextStyle(color: primaryContent.withOpacity(0.8)),
-      labelLarge: TextStyle(color: primaryContent.withOpacity(0.8)),
-      bodySmall: TextStyle(color: primaryContent.withOpacity(0.8)),
-      bodyMedium: TextStyle(color: primaryContent.withOpacity(0.8)));
+      titleLarge: TextStyle(color: colors.content.withOpacity(0.8)),
+      labelLarge: TextStyle(color: colors.content.withOpacity(0.8)),
+      bodySmall: TextStyle(color: colors.content.withOpacity(0.8)),
+      bodyMedium: TextStyle(color: colors.content.withOpacity(0.8)));
 }

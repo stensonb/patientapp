@@ -5,13 +5,13 @@ import 'package:nylo_framework/nylo_framework.dart';
 /// light_theme_colors.dart and dark_theme_colors.dart.
 
 abstract class ColorStyles extends BaseColorStyles {
-  /// * Available styles *
+  /// Available styles
 
   // general
   @override
   Color get background;
   @override
-  Color get primaryContent;
+  Color get content;
   @override
   Color get primaryAccent;
 
@@ -26,11 +26,15 @@ abstract class ColorStyles extends BaseColorStyles {
   @override
   Color get appBarPrimaryContent;
 
-  // buttons
   @override
   Color get buttonBackground;
   @override
-  Color get buttonPrimaryContent;
+  Color get buttonContent;
+
+  @override
+  Color get buttonSecondaryBackground;
+  @override
+  Color get buttonSecondaryContent;
 
   // bottom tab bar
   @override
@@ -47,6 +51,9 @@ abstract class ColorStyles extends BaseColorStyles {
   Color get bottomTabBarLabelUnselected;
   @override
   Color get bottomTabBarLabelSelected;
+
+  // toast notification
+  Color get toastNotificationBackground;
 
   // e.g. add a new style
   // Uncomment the below:

@@ -3,15 +3,14 @@ import '/config/toast_notification_styles.dart';
 import '/resources/widgets/loader_widget.dart';
 import '/resources/widgets/logo_widget.dart';
 import '/resources/widgets/toast_notification_widget.dart';
-import 'package:nylo_framework/nylo_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nylo_framework/nylo_framework.dart';
 
 /* Design
 |--------------------------------------------------------------------------
 | Contains App Font + Widgets used in the Nylo.
-| Learn more: https://nylo.dev/docs/5.20.0/themes-and-styling#design
+| Learn more: https://nylo.dev/docs/6.x/themes-and-styling#design
 |-------------------------------------------------------------------------- */
-
 
 /* Font
 |--------------------------------------------------------------------------
@@ -19,9 +18,8 @@ import 'package:google_fonts/google_fonts.dart';
 | You can use any font from Google Fonts library.
 | -------------------------------------------------------------------------- */
 
-final TextStyle appFont = GoogleFonts.montserrat();
+final TextStyle appFont = GoogleFonts.outfit();
 // e.g. final TextStyle appThemeFont = GoogleFonts.lato();
-
 
 /* App Logo
 |--------------------------------------------------------------------------
@@ -29,9 +27,8 @@ final TextStyle appFont = GoogleFonts.montserrat();
 | Use the Logo() widget or Nylo.getAppLogo() display your logo
 | -------------------------------------------------------------------------- */
 
-Widget logo = const Logo();
+final Widget logo = const Logo();
 // File: resources/widgets/logo_widget.dart
-
 
 /* Loader
 |--------------------------------------------------------------------------
@@ -39,9 +36,8 @@ Widget logo = const Logo();
 | Use the Loader() widget or Nylo.getAppLoader() display your loader
 | -------------------------------------------------------------------------- */
 
-Widget loader = const Loader();
+final Widget loader = const Loader();
 // File: resources/widgets/loader_widget.dart
-
 
 /* Toast Notification
 |--------------------------------------------------------------------------
@@ -49,12 +45,15 @@ Widget loader = const Loader();
 | Here you can handle the toast notification style.
 | -------------------------------------------------------------------------- */
 
-Widget getToastNotificationWidget({
-  required ToastNotificationStyleType style,
-  Function(ToastNotificationStyleMetaHelper helper)? toastNotificationStyleMeta, Function? onDismiss}) {
+Widget getToastNotificationWidget(
+    {required ToastNotificationStyleType style,
+    Function(ToastNotificationStyleMetaHelper helper)?
+        toastNotificationStyleMeta,
+    Function? onDismiss}) {
   if (toastNotificationStyleMeta == null) return const SizedBox.shrink();
 
-  ToastMeta toastMeta = toastNotificationStyleMeta(NyToastNotificationStyleMetaHelper(style));
+  ToastMeta toastMeta =
+      toastNotificationStyleMeta(NyToastNotificationStyleMetaHelper(style));
 
   return ToastNotification(toastMeta, onDismiss: onDismiss);
 }

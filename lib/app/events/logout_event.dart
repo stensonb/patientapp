@@ -10,6 +10,8 @@ class LogoutEvent implements NyEvent {
 class DefaultListener extends NyListener {
   @override
   handle(dynamic event) async {
-    // handle the payload from event
+    await Auth.logout();
+
+    routeToInitial();
   }
 }

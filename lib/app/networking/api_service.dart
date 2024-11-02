@@ -6,40 +6,49 @@ import 'package:nylo_framework/nylo_framework.dart';
 /* ApiService
 | -------------------------------------------------------------------------
 | Define your API endpoints
-| Learn more https://nylo.dev/docs/5.20.0/networking
+| Learn more https://nylo.dev/docs/6.x/networking
 |-------------------------------------------------------------------------- */
 
 class ApiService extends NyApiService {
-
-  ApiService({BuildContext? buildContext}) : super(
-      buildContext,
-      decoders: modelDecoders,
-      // baseOptions: (BaseOptions baseOptions) {
-      //   return baseOptions
-      //             ..connectTimeout = Duration(seconds: 5)
-      //             ..sendTimeout = Duration(seconds: 5)
-      //             ..receiveTimeout = Duration(seconds: 5);
-      // },
-  );
+  ApiService({BuildContext? buildContext})
+      : super(
+          buildContext,
+          decoders: modelDecoders,
+          // baseOptions: (BaseOptions baseOptions) {
+          //   return baseOptions
+          //             ..connectTimeout = Duration(seconds: 5)
+          //             ..sendTimeout = Duration(seconds: 5)
+          //             ..receiveTimeout = Duration(seconds: 5);
+          // },
+        );
 
   @override
   String get baseUrl => getEnv('API_BASE_URL');
 
   @override
   get interceptors => {
-    if (getEnv('APP_DEBUG') == true)
-    PrettyDioLogger: PrettyDioLogger()
-  };
+        if (getEnv('APP_DEBUG') == true) PrettyDioLogger: PrettyDioLogger(),
+        // MyCustomInterceptor: MyCustomInterceptor(),
+      };
 
   Future fetchTestData() async {
     return await network(
-        request: (request) => request.get("/endpoint-path"),
+      request: (request) => request.get("/endpoint-path"),
+    );
+  }
+
+  /// Example to fetch the Nylo repository info from Github
+  Future githubInfo() async {
+    return await network(
+      request: (request) =>
+          request.get("https://api.github.com/repos/nylo-core/nylo"),
+      cacheKey: "github_nylo_info", // Optional: Cache the response
+      cacheDuration: const Duration(hours: 1),
     );
   }
 
   /* Helpers
   |-------------------------------------------------------------------------- */
-
 
   /* Authentication Headers
   |--------------------------------------------------------------------------
@@ -49,13 +58,12 @@ class ApiService extends NyApiService {
 
   // @override
   // Future<RequestHeaders> setAuthHeaders(RequestHeaders headers) async {
-  //   String? myAuthToken = await StorageKey.userToken.read();
+  //   String? myAuthToken = await Keys.bearerToken.read();
   //   if (myAuthToken != null) {
   //     headers.addBearerToken( myAuthToken );
   //   }
   //   return headers;
   // }
-
 
   /* Should Refresh Token
   |--------------------------------------------------------------------------
@@ -68,7 +76,6 @@ class ApiService extends NyApiService {
   //   return false;
   // }
 
-
   /* Refresh Token
   |--------------------------------------------------------------------------
   | If `shouldRefreshToken` returns true then this method
@@ -80,23 +87,6 @@ class ApiService extends NyApiService {
   // refreshToken(Dio dio) async {
   //  dynamic response = (await dio.get("https://example.com/refresh-token")).data;
   //  // Save the new token
-  //   await StorageKey.userToken.store(response['token']);
-  // }
-
-
-  /* Display a error
-  |--------------------------------------------------------------------------
-  | This method is only called if you provide the API service
-  | with a [BuildContext]. Example below:
-  | api<ApiService>(
-  |        request: (request) => request.myApiCall(),
-  |         context: context);
-  |-------------------------------------------------------------------------- */
-
-  // displayError(DioException dioException, BuildContext context) {
-  //   showToastNotification(context,
-  //       title: "Error",
-  //       description: dioException.message ?? "",
-  //       style: ToastNotificationStyleType.DANGER);
+  //   await Keys.bearerToken.save(response['token']);
   // }
 }

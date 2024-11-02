@@ -16,7 +16,16 @@ extension NyText on Text {
 
 /// [BuildContext] Extensions
 extension NyApp on BuildContext {
+  /// Get the current theme color
   ColorStyles get color => ThemeColor.get(this);
+
+  /// Check if the device is in dark mode
+  bool get isThemeDark {
+    if (this.isDeviceInDarkMode) return true;
+
+    return ThemeProvider.controllerOf(this).currentThemeId ==
+        getEnv('DARK_THEME_ID');
+  }
 }
 
 /// [TextStyle] Extensions

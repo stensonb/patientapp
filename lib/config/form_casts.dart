@@ -1,8 +1,7 @@
-
 /* Form Casts
 | -------------------------------------------------------------------------
 | Add custom Form casts here. They will be used to render form fields.
-| Learn more https://nylo.dev/docs/5.20.0/forms#custom-form-fields
+| Learn more https://nylo.dev/docs/6.x/forms#custom-form-fields
 |-------------------------------------------------------------------------- */
 
 import 'package:nylo_framework/nylo_framework.dart';
