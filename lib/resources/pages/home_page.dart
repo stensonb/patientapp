@@ -38,6 +38,11 @@ class _HomePageState extends NyPage<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           showToastSuccess(title: "Hello 👋", description: "Welcome to Nylo");
+
+          // Uncomment the code below to send a push notifications
+          // await PushNotification.sendNotification(
+          //     title: "Hello 👋", body: "Welcome to Nylo",
+          // );
         },
         child: const Icon(Icons.notifications),
       ),

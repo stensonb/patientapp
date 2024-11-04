@@ -17,7 +17,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 appRouter() => nyRoutes((router) {
       router.add(HomePage.path).initialRoute();
-      // Add your routes here
+      // Add your routes here ...
 
       // router.add(NewPage.path, transition: PageTransitionType.fade);
 

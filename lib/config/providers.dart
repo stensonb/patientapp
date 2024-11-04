@@ -1,3 +1,4 @@
+import '/app/providers/push_notifications_provider.dart';
 import '/app/providers/app_provider.dart';
 import '/app/providers/event_provider.dart';
 import '/app/providers/route_provider.dart';
@@ -15,4 +16,5 @@ final Map<Type, NyProvider> providers = {
   AppProvider: AppProvider(),
   RouteProvider: RouteProvider(),
   EventProvider: EventProvider(),
+  PushNotificationsProvider: PushNotificationsProvider(),
 };
