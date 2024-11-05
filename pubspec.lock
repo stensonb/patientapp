@@ -686,10 +686,10 @@ packages:
     dependency: "direct main"
     description:
       name: scaffold_ui
-      sha256: cd87f003ae6f04780a1aedb9049024d2244edaa16b7eaac71e17c8b07fbde7e3
+      sha256: fff37a8a2eab1013e75ab77b6c64977663ef90017bb4393f212d2bf0722cd098
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.0"
   shared_preferences:
     dependency: transitive
     description:
