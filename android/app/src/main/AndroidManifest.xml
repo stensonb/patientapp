@@ -44,15 +44,15 @@
             android:value="2" />
 
         <service
-            android:name="com.nylo.android.ForegroundService"
+            android:name="com.dexterous.flutterlocalnotifications.ForegroundService"
             android:exported="false"
             android:stopWithTask="false"
             android:foregroundServiceType="specialUse">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="To demonstrate how to use foreground services to show notifications"/>
         </service>
-        <receiver android:exported="false" android:name="com.nylo.android.ActionBroadcastReceiver" />
-        <receiver android:exported="false" android:name="com.nylo.android.ScheduledNotificationReceiver" />
-        <receiver android:exported="false" android:name="com.nylo.android.ScheduledNotificationBootReceiver">
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver" />
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
