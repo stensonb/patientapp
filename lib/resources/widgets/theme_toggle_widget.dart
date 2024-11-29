@@ -1,4 +1,3 @@
-import '/bootstrap/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/theme/helper/ny_theme.dart';
 import 'package:nylo_framework/nylo_framework.dart';
