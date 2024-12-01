@@ -6,20 +6,14 @@ class TextOnlyButton extends AppButton with ButtonActions {
   final Color? textColor;
 
   const TextOnlyButton({
-    Key? key,
-    required String text,
-    VoidCallback? onPressed,
+    super.key,
+    required super.text,
+    super.onPressed,
     this.textColor,
-    (String, Function(dynamic data))? submitForm,
-    double? width,
-    double height = 50,
-  }) : super(
-            key: key,
-            text: text,
-            submitForm: submitForm,
-            onPressed: onPressed,
-            width: width,
-            height: height);
+    super.submitForm,
+    super.width,
+    super.height,
+  });
 
   @override
   Widget build(BuildContext context) {

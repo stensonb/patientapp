@@ -9,13 +9,13 @@ abstract class AppButton extends StatelessWidget {
   final (String, Function(dynamic data))? submitForm;
 
   const AppButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onPressed,
     this.width,
     this.height = 50,
     this.submitForm,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context);

@@ -11,7 +11,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 class HomePage extends NyStatefulWidget<HomeController> {
   static RouteView path = ("/home", (_) => HomePage());
 
-  HomePage() : super(child: () => _HomePageState());
+  HomePage({super.key}) : super(child: () => _HomePageState());
 }
 
 class _HomePageState extends NyPage<HomePage> {
@@ -29,6 +29,7 @@ class _HomePageState extends NyPage<HomePage> {
   /// Define the Loading style for the page.
   /// Options: LoadingStyle.normal(), LoadingStyle.skeletonizer(), LoadingStyle.none()
   /// uncomment the code below.
+  @override
   LoadingStyle get loadingStyle => LoadingStyle.normal();
 
   /// The [view] method displays your page.

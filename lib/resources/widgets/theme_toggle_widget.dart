@@ -9,7 +9,7 @@ class ThemeToggle extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isThemeDark = context.isThemeDark;
 
-    if (context.isDeviceInDarkMode)
+    if (context.isDeviceInDarkMode) {
       return Container(
         width: double.infinity,
         margin: EdgeInsets.only(top: 8),
@@ -24,6 +24,7 @@ class ThemeToggle extends StatelessWidget {
           ],
         ),
       );
+    }
 
     return Column(
       children: [

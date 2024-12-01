@@ -53,5 +53,6 @@ class LightThemeColors implements ColorStyles {
   Color get bottomTabBarLabelSelected => Colors.black;
 
   // toast notification
+  @override
   Color get toastNotificationBackground => Colors.white;
 }

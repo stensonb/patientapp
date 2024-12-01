@@ -7,19 +7,14 @@ class OutlinedButton extends AppButton {
   final Color? textColor;
 
   const OutlinedButton({
-    Key? key,
-    required String text,
-    VoidCallback? onPressed,
+    super.key,
+    required super.text,
+    super.onPressed,
     this.borderColor,
     this.textColor,
-    double? width,
-    double height = 50,
-  }) : super(
-            key: key,
-            text: text,
-            onPressed: onPressed,
-            width: width,
-            height: height);
+    super.width,
+    super.height,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -7,19 +7,14 @@ class RoundedButton extends AppButton {
   final BorderRadius? borderRadius;
 
   const RoundedButton({
-    Key? key,
-    required String text,
-    VoidCallback? onPressed,
+    super.key,
+    required super.text,
+    super.onPressed,
     this.color,
     this.borderRadius,
-    double? width,
-    double height = 50,
-  }) : super(
-            key: key,
-            text: text,
-            onPressed: onPressed,
-            width: width,
-            height: height);
+    super.width,
+    super.height,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import '/resources/widgets/logo_widget.dart';
 import 'dart:math';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   /// Create a new instance of the MaterialApp
   static MaterialApp app() {
@@ -34,13 +34,13 @@ class AnimatedLoader extends StatefulWidget {
   final Color color;
 
   const AnimatedLoader({
-    Key? key,
+    super.key,
     this.size = 50.0,
     this.color = Colors.blue,
-  }) : super(key: key);
+  });
 
   @override
-  _AnimatedLoaderState createState() => _AnimatedLoaderState();
+  createState() => _AnimatedLoaderState();
 }
 
 class _AnimatedLoaderState extends State<AnimatedLoader>

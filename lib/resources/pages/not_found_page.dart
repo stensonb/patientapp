@@ -4,7 +4,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 class NotFoundPage extends NyStatefulWidget {
   static RouteView path = ("/not-found", (_) => NotFoundPage());
 
-  NotFoundPage() : super(child: () => _NotFoundPageState());
+  NotFoundPage({super.key}) : super(child: () => _NotFoundPageState());
 }
 
 class _NotFoundPageState extends NyState<NotFoundPage> {
@@ -16,10 +16,8 @@ class _NotFoundPageState extends NyState<NotFoundPage> {
     return Scaffold(
       appBar: AppBar(title: Text("Not Found")),
       body: SafeArea(
-        child: Container(
-          child: Center(
-            child: Text("Page not found"),
-          ),
+        child: Center(
+          child: Text("Page not found"),
         ),
       ),
     );

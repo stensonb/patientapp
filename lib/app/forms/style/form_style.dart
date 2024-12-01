@@ -13,7 +13,7 @@ class FormStyle extends NyFormStyle {
               filled: true,
               fillColor: Colors.grey.shade100,
               isDense: true,
-              hintText: "${field.name}",
+              hintText: field.name,
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(color: Colors.red, width: 2)),
@@ -62,7 +62,7 @@ class FormStyle extends NyFormStyle {
               filled: true,
               fillColor: Colors.grey.shade100,
               isDense: true,
-              hintText: "${field.name}",
+              hintText: field.name,
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(color: Colors.transparent)),
