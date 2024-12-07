@@ -534,18 +534,18 @@ packages:
     dependency: "direct main"
     description:
       name: nylo_framework
-      sha256: "80e3706c0b228e0debc967a4ef8d091ebffee540071458cd0b8cd06be3f96d18"
+      sha256: "793fdb5fea6b767098f021f836b59b9daac203dfbe71496293ab10aa428837a7"
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.8"
+    version: "6.2.9"
   nylo_support:
     dependency: transitive
     description:
       name: nylo_support
-      sha256: c519d8d3939065532374b82ddca16c74db3d18e851246f2e604b228e1f4ee2a5
+      sha256: eea1cdd4f70b772ad770fbb100aa2252a57c5a90dff8bdcec49a38c20532f2c9
       url: "https://pub.dev"
     source: hosted
-    version: "6.7.1"
+    version: "6.8.0"
   package_config:
     dependency: transitive
     description:
@@ -686,10 +686,10 @@ packages:
     dependency: "direct main"
     description:
       name: scaffold_ui
-      sha256: "93c9363df9e81613148d07f31860b1e9044757c0b17649c0190b529ce8229d21"
+      sha256: "52af24c0fd05824c76f37f30a7e65576f4a5e4106e8810303fa2d026aefbbdee"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.4"
+    version: "1.1.5"
   shared_preferences:
     dependency: transitive
     description:
@@ -827,10 +827,10 @@ packages:
     dependency: transitive
     description:
       name: timezone
-      sha256: "2236ec079a174ce07434e89fcd3fcda430025eb7692244139a9cf54fdcf1fc7d"
+      sha256: ffc9d5f4d1193534ef051f9254063fa53d588609418c84299956c3db9383587d
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.4"
+    version: "0.10.0"
   typed_data:
     dependency: transitive
     description:
