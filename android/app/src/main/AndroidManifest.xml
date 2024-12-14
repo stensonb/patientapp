@@ -2,14 +2,16 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!--<uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />-->
+    <!--<uses-permission android:name="android.permission.USE_EXACT_ALARM" />-->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!--<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />-->
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:label="Nylo"
+        android:label="PatientApp"
         android:name="${applicationName}"
         android:allowBackup="false"
         android:fullBackupContent="false"

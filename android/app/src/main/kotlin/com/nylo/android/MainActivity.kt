@@ -1,4 +1,4 @@
-package com.nylo.android
+package com.siliconvortex.jjm.patientapp
 
 import android.content.ContentResolver
 import android.content.Context
