@@ -85,7 +85,7 @@ class _DashboardPageState extends NyPage<DashboardPage> {
         )
       )),
       appBar: AppBar(
-        title: Text("Ideal Heal AI - Doc Portal"),
+        title: Text("Ideal Healing AI"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -95,7 +95,7 @@ class _DashboardPageState extends NyPage<DashboardPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Welcome " + username),
-              Container(child: Text("(List of clients here)")),
+              Container(child: Text("Menu here")),
               Padding(padding: EdgeInsets.all(40)),
             ],
           ),

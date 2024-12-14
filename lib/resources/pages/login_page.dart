@@ -5,6 +5,7 @@ import 'package:flutter_app/resources/themes/styles/dark_theme_colors.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/resources/widgets/safearea_widget.dart';
 
+
 class LoginPage extends NyStatefulWidget {
 
   static RouteView path = ("/login", (_) => LoginPage());
@@ -25,7 +26,8 @@ class _LoginPageState extends NyPage<LoginPage> {
   Widget view(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ideal Healing AI")
+        title: Text("Ideal Healing AI"),
+        centerTitle: true,
       ),
       body: SafeAreaWidget(
         child: Center(
@@ -57,11 +59,11 @@ class _LoginPageState extends NyPage<LoginPage> {
 _login() async {
   // would do OIDC flow here
   User user = User();
-  user.name = "Dr Foo";
-  user.email = "dr.foo@example.com";
+  user.name = "Sally Patient";
+  user.email = "sally.patient@example.com";
   await Auth.authenticate(data: user);
 
-  await sleep(2);
+  await sleep(1);
 
   routeTo(DashboardPage.path, 
     navigationType: NavigationType.pushReplace,
