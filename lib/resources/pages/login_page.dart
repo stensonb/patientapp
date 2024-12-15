@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/models/user.dart';
 import 'package:flutter_app/resources/pages/dashboard_page.dart';
+import 'package:flutter_app/resources/pages/scan_invite_page.dart';
 import 'package:flutter_app/resources/themes/styles/dark_theme_colors.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '/resources/widgets/safearea_widget.dart';
@@ -45,8 +46,13 @@ class _LoginPageState extends NyPage<LoginPage> {
                 child: isAuthenticating? CircularProgressIndicator(color: Colors.white,) : const Text('Login (existing account)'),
               ),
               ElevatedButton(
-                child: const Text("Accept Invite..."),
-                onPressed: () {},
+                child: const Text("Scan Invite..."),
+                onPressed: () {
+                    routeTo(ScanInvitePage.path,
+                      navigationType: NavigationType.push,
+                      pageTransitionType: PageTransitionType.fade
+                    );
+                },
               ),
             ]
           )

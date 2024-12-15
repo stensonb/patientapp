@@ -1,3 +1,4 @@
+import '/resources/pages/scan_invite_page.dart';
 import '../resources/pages/login_page.dart';
 import '../resources/pages/dashboard_page.dart';
 import '/resources/pages/not_found_page.dart';
@@ -33,4 +34,5 @@ appRouter() => nyRoutes((router) {
       router.add(NotFoundPage.path).unknownRoute();
       router.add(DashboardPage.path, authenticatedRoute: true); // authenticated route
       router.add(LoginPage.path, initialRoute: true, transition: PageTransitionType.fade);
+  router.add(ScanInvitePage.path);
 });
