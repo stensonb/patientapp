@@ -96,7 +96,7 @@ class _DashboardPageState extends NyPage<DashboardPage> {
             children: [
               Text("Welcome " + username),
               Container(child: Text("Menu here")),
-              Padding(padding: EdgeInsets.all(40)),
+//              Padding(padding: EdgeInsets.all(40)),
             ],
           ),
          ),

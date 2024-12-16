@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/widgets/scanned_barcode_label_widget.dart';
 import 'package:flutter_app/resources/widgets/switch_camera_button_widget.dart';
@@ -14,110 +12,7 @@ class ScanInvitePage extends NyStatefulWidget {
   ScanInvitePage({super.key}) : super(child: () => _ScanInvitePageState());
 }
 
-// added from mobile_scanner pub.dev page
-final MobileScannerController controller = MobileScannerController(
-  // required options for the scanner
-);
-
-StreamSubscription<Object?>? _subscription;
-
-class _ScanInvitePageState extends NyPage<ScanInvitePage> with WidgetsBindingObserver {
-
-  @override
-  get init => () {
-
-  };
-
-  @override
-void initState() {
-  super.initState();
-  // Start listening to lifecycle changes.
-  WidgetsBinding.instance.addObserver(this);
-
-  // Start listening to the barcode events.
-  _subscription = controller.barcodes.listen(_handleBarcode);
-
-  // Finally, start the scanner itself.
-  unawaited(controller.start());
-}
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    // If the controller is not ready, do not try to start or stop it.
-    // Permission dialogs can trigger lifecycle changes before the controller is ready.
-    if (!controller.value.hasCameraPermission) {
-      return;
-    }
-
-    switch (state) {
-      case AppLifecycleState.detached:
-      case AppLifecycleState.hidden:
-      case AppLifecycleState.paused:
-        return;
-      case AppLifecycleState.resumed:
-        // Restart the scanner when the app is resumed.
-        // Don't forget to resume listening to the barcode events.
-        _subscription = controller.barcodes.listen(_handleBarcode);
-
-        unawaited(controller.start());
-      case AppLifecycleState.inactive:
-        // Stop the scanner when the app is paused.
-        // Also stop the barcode events subscription.
-        unawaited(_subscription?.cancel());
-        _subscription = null;
-        unawaited(controller.stop());
-    }
-  }
-
-  @override
-  Future<void> dispose() async {
-    // Stop listening to lifecycle changes.
-    WidgetsBinding.instance.removeObserver(this);
-    // Stop listening to the barcode events.
-    unawaited(_subscription?.cancel());
-    _subscription = null;
-    // Dispose the widget itself.
-    super.dispose();
-    // Finally, dispose of the controller.
-    await controller.dispose();
-  }
-
-  @override
-  Widget view(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Scan Invite")
-      ),
-      body: SafeArea(
-         child: Container(
-          child: Column(
-            children: [
-              MobileScanner(),
-              //   allowDuplicates: false,
-              //   onDetect: (barcode, args) {
-              //     final String? code = barcode.rawValue;
-              //     debugPrint('Barcode found! $code');
-              // }),
-              ElevatedButton(onPressed: () {
-                Navigator.pop(context);
-              }, child: Text("Back")),
-            ],
-          ),
-         ),
-      ),
-    );
-  }
-}
-
-class BarcodeScannerWithOverlay extends StatefulWidget {
-  const BarcodeScannerWithOverlay({super.key});
-
-  @override
-  _BarcodeScannerWithOverlayState createState() =>
-      _BarcodeScannerWithOverlayState();
-}
-
-class _BarcodeScannerWithOverlayState extends State<BarcodeScannerWithOverlay> {
+class _ScanInvitePageState extends NyPage<ScanInvitePage> {
   final MobileScannerController controller = MobileScannerController(
     formats: const [BarcodeFormat.qrCode],
   );
@@ -133,7 +28,7 @@ class _BarcodeScannerWithOverlayState extends State<BarcodeScannerWithOverlay> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Scanner with Overlay Example app'),
+        title: const Text('Scan Invite'),
       ),
       body: Stack(
         fit: StackFit.expand,
@@ -143,9 +38,9 @@ class _BarcodeScannerWithOverlayState extends State<BarcodeScannerWithOverlay> {
               fit: BoxFit.contain,
               controller: controller,
               scanWindow: scanWindow,
-              // errorBuilder: (context, error, child) {
-              //   return ScannerErrorWidget(error: error);
-              // },
+              errorBuilder: (context, error, child) {
+                return ScannerErrorWidget(error: error);
+              },
               overlayBuilder: (context, constraints) {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -257,5 +152,51 @@ class ScannerOverlay extends CustomPainter {
   bool shouldRepaint(ScannerOverlay oldDelegate) {
     return scanWindow != oldDelegate.scanWindow ||
         borderRadius != oldDelegate.borderRadius;
+  }
+}
+
+class ScannerErrorWidget extends StatelessWidget {
+  const ScannerErrorWidget({super.key, required this.error});
+
+  final MobileScannerException error;
+
+  @override
+  Widget build(BuildContext context) {
+    String errorMessage;
+
+    switch (error.errorCode) {
+      case MobileScannerErrorCode.controllerUninitialized:
+        errorMessage = 'Controller not ready';
+      case MobileScannerErrorCode.permissionDenied:
+        errorMessage = 'Permission denied';
+      case MobileScannerErrorCode.unsupported:
+        errorMessage = 'Scanning is unsupported on this device';
+      default:
+        errorMessage = 'Generic Error';
+        break;
+    }
+
+    return ColoredBox(
+      color: Colors.black,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16),
+              child: Icon(Icons.error, color: Colors.white),
+            ),
+            Text(
+              errorMessage,
+              style: const TextStyle(color: Colors.white),
+            ),
+            Text(
+              error.errorDetails?.message ?? '',
+              style: const TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

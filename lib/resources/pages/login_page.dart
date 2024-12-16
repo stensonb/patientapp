@@ -35,15 +35,17 @@ class _LoginPageState extends NyPage<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: isAuthenticating? [CircularProgressIndicator(color: Colors.blue,)] : [
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    isAuthenticating = true;
-                    _login();
-                  });
+                  if (!isAuthenticating) {
+                    setState(() {
+                      isAuthenticating = true;
+                      _login();
+                    });
+                  };
                 },
-                child: isAuthenticating? CircularProgressIndicator(color: Colors.white,) : const Text('Login (existing account)'),
+                child: const Text('Login (existing account)'),
               ),
               ElevatedButton(
                 child: const Text("Scan Invite..."),
