@@ -31,13 +31,16 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   mobile_scanner: ^6.0.2
+  camerawesome: ^2.1.0
+  cross_file: ^0.3.4+2
+  #better_open_file: ^3.6.5
 
 dev_dependencies:
   rename: ^3.0.2
   flutter_launcher_icons: ^0.14.1
   # The following line 'flutter_lints' activates a set of recommended lints for Flutter apps,
   # packages, and plugins designed to encourage good coding practices.
-#  flutter_lints: ^5.0.0
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 

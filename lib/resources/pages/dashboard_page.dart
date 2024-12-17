@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/pages/login_page.dart';
+import 'package:flutter_app/resources/pages/take_picture_page.dart';
 import 'package:flutter_app/resources/widgets/logo_widget.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -94,8 +95,17 @@ class _DashboardPageState extends NyPage<DashboardPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Welcome " + username),
-              Container(child: Text("Menu here")),
+              Text("Welcome $username"),
+              Text("Menu here"),
+              ElevatedButton(
+                onPressed: () {
+                    routeTo(TakePicturePage.path,
+                      navigationType: NavigationType.push,
+                      pageTransitionType: PageTransitionType.fade
+                    );
+                },
+                child: const Text("Take pic..."),
+              ),
 //              Padding(padding: EdgeInsets.all(40)),
             ],
           ),

@@ -1,6 +1,11 @@
 PODS:
   - app_badge_plus (1.1.6):
     - Flutter
+  - better_open_file (0.0.1):
+    - Flutter
+  - camerawesome (0.0.1):
+    - Flutter
+    - JPSVolumeButtonHandler
   - Flutter (1.0.0)
   - flutter_local_notifications (0.0.1):
     - Flutter
@@ -31,6 +36,7 @@ PODS:
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
   - GTMSessionFetcher/Core (3.5.0)
+  - JPSVolumeButtonHandler (1.0.5)
   - MLImage (1.0.0-beta6)
   - MLKitBarcodeScanning (6.0.0):
     - MLKitCommon (~> 12.0)
@@ -68,6 +74,8 @@ PODS:
 
 DEPENDENCIES:
   - app_badge_plus (from `.symlinks/plugins/app_badge_plus/ios`)
+  - better_open_file (from `.symlinks/plugins/better_open_file/ios`)
+  - camerawesome (from `.symlinks/plugins/camerawesome/ios`)
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
@@ -84,6 +92,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - JPSVolumeButtonHandler
     - MLImage
     - MLKitBarcodeScanning
     - MLKitCommon
@@ -94,6 +103,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   app_badge_plus:
     :path: ".symlinks/plugins/app_badge_plus/ios"
+  better_open_file:
+    :path: ".symlinks/plugins/better_open_file/ios"
+  camerawesome:
+    :path: ".symlinks/plugins/camerawesome/ios"
   Flutter:
     :path: Flutter
   flutter_local_notifications:
@@ -113,6 +126,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   app_badge_plus: 6a335976213896ae5d35e588f2ecbe89c9f3c845
+  better_open_file: 1b4512d5c323999178c1cfe6427352cd582f351b
+  camerawesome: ae69de297ab1a69a0bcaeef8797d3045ed57172f
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_local_notifications: 395056b3175ba4f08480a7c5de30cd36d69827e4
   flutter_secure_storage: 1ed9476fba7e7a782b22888f956cce43e2c62f13
@@ -122,6 +137,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: d1a2cbf009c453f4d6ded37c105e2f67a32206d8
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
+  JPSVolumeButtonHandler: 53110330c9168ed325def93eabff39f0fe3e8082
   MLImage: 0ad1c5f50edd027672d8b26b0fee78a8b4a0fc56
   MLKitBarcodeScanning: 0a3064da0a7f49ac24ceb3cb46a5bc67496facd2
   MLKitCommon: 07c2c33ae5640e5380beaaa6e4b9c249a205542d
